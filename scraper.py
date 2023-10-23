@@ -18,7 +18,7 @@ reddit = praw.Reddit(client_id=client_id,
                      username=username,
                      password=password)
 
-def get_image_posts(subreddit_name, limit=10):
+def get_image_posts(subreddit_name, limit=3):
     """
     Fetches image posts from a specified subreddit's 'hot' category.
 
