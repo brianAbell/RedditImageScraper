@@ -79,3 +79,10 @@ def download_images(posts):
             
             # Write the raw image content to the file
             f.write(image)
+
+# check if the script is being run as the main program and not imported as a module elsewhere
+if __name__ == "__main__":
+    subreddit_name = input("Enter subreddit name: ")
+    posts = get_image_posts(subreddit_name, limit=10)
+    download_images(posts)
+    print("Images downloaded successfully!")
