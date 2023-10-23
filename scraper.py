@@ -2,6 +2,10 @@ import os
 import praw
 import requests
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # Load secrets from .env file
 client_id = os.getenv('REDDIT_CLIENT_ID')
 client_secret = os.getenv('REDDIT_CLIENT_SECRET')
