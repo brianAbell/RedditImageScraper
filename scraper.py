@@ -65,6 +65,10 @@ def download_images(posts):
     - Saves the image with its original name in the current directory.
     """
 
+    # Ensure 'output' directory exists
+    if not os.path.exists('output'):
+        os.makedirs('output')
+
     # Loop through each post object in the list
     for post in posts:
         
@@ -73,7 +77,7 @@ def download_images(posts):
         
         # Extract the image's filename from its URL.
         # This is done by splitting the URL at each "/" and taking the last segment.
-        image_name = image_url.split("/")[-1]
+        image_name = os.path.join('output', image_url.split("/")[-1])
         
         # Open (or create) an image file in binary write mode
         with open(image_name, 'wb') as f:
