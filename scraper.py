@@ -40,7 +40,8 @@ def get_image_posts(subreddit_name, limit=3):
     posts = []
 
     # Loop through each post in the 'hot' category of the subreddit
-    for post in subreddit.hot(limit=limit):
+    # for post in subreddit.hot(limit=limit):
+    for post in subreddit.top(time_filter="all", limit=limit):
         
         # Check if the post's URL points to an image with a valid extension
         if post.url.endswith(('jpg', 'jpeg', 'png')):
