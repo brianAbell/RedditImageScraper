@@ -14,17 +14,39 @@ reddit = praw.Reddit(client_id=client_id,
                      username=username,
                      password=password)
 
-# Fetch posts from subreddit
 def get_image_posts(subreddit_name, limit=10):
+    """
+    Fetches image posts from a specified subreddit's 'hot' category.
+
+    Args:
+    - subreddit_name (str): Name of the subreddit to fetch posts from.
+    - limit (int, optional): Number of posts to fetch. Defaults to 10.
+
+    Returns:
+    - list: List of Reddit post objects containing images.
+
+    Notes:
+    - Only fetches posts linking to 'jpg', 'jpeg', or 'png' images.
+    """
+
+    # Create a PRAW subreddit object for the specified subreddit
     subreddit = reddit.subreddit(subreddit_name)
+    
+    # Initialize an empty list to store posts with valid image links
     posts = []
 
-    # for each post in 'hot' category, add valid image to list
+    # Loop through each post in the 'hot' category of the subreddit
     for post in subreddit.hot(limit=limit):
+        
+        # Check if the post's URL points to an image with a valid extension
         if post.url.endswith(('jpg', 'jpeg', 'png')):
+            
+            # If it's an image post, add it to the list
             posts.append(post)
     
+    # Return the list of image posts
     return posts
+
 
 def download_images(posts):
     """
